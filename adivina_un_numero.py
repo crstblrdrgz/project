@@ -1,6 +1,6 @@
 number_to_guess = 14
 
-user_number = int(input("Adivina un numero: "))
+user_number = int(input("Adivina el numero: "))
 
 if user_number == number_to_guess:
     print("has ganado")
