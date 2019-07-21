@@ -1,6 +1,7 @@
 
 
 lista_srt = ["PEPE", "PIEDRA", "COCHE", "AGUA", "SOL"]
-numero_lista = []
 
-for palabra in lista_srt:
+lista_final = [len(palabra)for palabra in lista_srt]
+
+print(lista_final)
