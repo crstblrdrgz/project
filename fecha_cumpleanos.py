@@ -22,6 +22,6 @@ dia_semana ={0:"Lunes",
             5:"Sabado",
             6:"Domingo"}
 
-print("Quedan para tu cumple {}".format(dia_restante))
+print("Quedan para tu cumple {} dias".format(int(dia_restante.days)))
 
 print("Y sera {} ".format(dia_semana[cumpleanos.weekday()]))
