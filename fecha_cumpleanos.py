@@ -1,11 +1,18 @@
 import datetime
-
+ano = int(input("Año de nacimiento(numero): "))
 mes = int(input("Mes de nacimiento(numero): "))
-dia = int(input("Dia de nacimiento: "))
+dia = int(input("Dia de nacimiento(numero): "))
 
-cumpleanos = datetime.datetime(year=datetime.datetime.now().year, month=mes, day=dia)
+cumpleanos = datetime.datetime(year=ano, month=mes, day=dia)
+hoy = datetime.datetime.now()
+if cumpleanos.month > datetime.datetime.now().month:
+    cumpleanos = datetime.datetime(year=datetime.datetime.now().year, month=mes, day=dia)
 
-dia_restante = cumpleanos - datetime.datetime.now()
+else:
+    ano = datetime.datetime.now().year + 1
+    cumpleanos = datetime.datetime(year=ano, month=mes, day=dia)
+
+dia_restante = cumpleanos - hoy
 
 dia_semana ={0:"Lunes",
             1:"Martes",
@@ -17,4 +24,4 @@ dia_semana ={0:"Lunes",
 
 print("Quedan para tu cumple {}".format(dia_restante))
 
-print("Y sera {}".format(dia_semana[cumpleanos.weekday()]))
+print("Y sera {} ".format(dia_semana[cumpleanos.weekday()]))
