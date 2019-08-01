@@ -51,7 +51,13 @@ elif deporte == "Q":
 birth_date = datetime.datetime.strptime(birth_date, "%d/%m/%Y")
 
 
-
+dia_semana ={0:"Lunes",
+            1:"Martes",
+            2:"Miercoles",
+            3:"Jueves",
+            4:"Viernes",
+            5:"Sabado",
+            6:"Domingo"}
 
 base_lifespan = random.randint(AVERAGE_LIFESPAN -20, AVERAGE_LIFESPAN)
 lifespan = base_lifespan - years_lost
@@ -59,3 +65,5 @@ death_day = birth_date + datetime.timedelta(days=lifespan*365)
 days_to_death = death_day - datetime.datetime.now()
 
 print("Fecha de tu muerte {}, Te quedan {} dias de vida, Que son {} años".format(death_day.strftime("%d/%m/%Y"), days_to_death.days, int(days_to_death.days/365)))
+
+print("Sera un {}".format(dia_semana[death_day.weekday()]))
