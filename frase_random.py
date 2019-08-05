@@ -21,7 +21,7 @@ while True:
     sleep(1)
     segundo = datetime.datetime.now().second
     if segundo > 9:
-        segundo = datetime.datetime.now().second % 10
+        segundo = segundo % 10
         aleatorio = random.randint(0, len(frases[segundo]))
         print(frases[segundo][aleatorio - 1])
     else:
