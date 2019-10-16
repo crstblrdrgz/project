@@ -146,7 +146,7 @@ def save_contacts(contacts):
     with open(SAVE_FILE_NAME, "wb") as save_file:
         pickle.dump(contacts, save_file)
     print("Datos guardados correctamente.")
-    sleep(2)
+
 
 
 def main():
