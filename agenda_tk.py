@@ -158,12 +158,11 @@ def load_contacts():
 def save_contacts(contacts):
     with open(SAVE_FILE_NAME, "wb") as save_file:
         pickle.dump(contacts, save_file)
-    print("Datos guardados correctamente.")
-    sleep(2)
+
 
 
 def main():
-    contacts = []
+    contacts = load_contacts()
 
 
     root = Tk()
@@ -182,11 +181,12 @@ def main():
     ttk.Label(frame_contact_list, text="Email").grid(column=2, row=1)
     ttk.Label(frame_contact_list, text="Telefono").grid(column=3, row=1)
 
-    ttk.Label(frame_add_contact, text="Nombre").grid(column=1, row=1)
-    ttk.Label(frame_add_contact, text="Email").grid(column=2, row=1)
-    ttk.Label(frame_add_contact, text="Telefono").grid(column=3, row=1)
+    ttk.Label(frame_add_contact, text="Nombre").grid(column=1, row=1, sticky=S)
+    ttk.Label(frame_add_contact, text="Email").grid(column=2, row=1, sticky=S)
+    ttk.Label(frame_add_contact, text="Telefono").grid(column=3, row=1, sticky=S)
 
-    ttk.Entry(frame_add_contact, width=7, textvariable=name).grid(column=1, row=2)
+    name_entry = ttk.Entry(frame_add_contact, width=7, textvariable=name)
+    name_entry.grid(column=1, row=2)
     ttk.Entry(frame_add_contact, width=7, textvariable=email).grid(column=2, row=2)
     ttk.Entry(frame_add_contact, width=7, textvariable=phone).grid(column=3, row=2)
 
@@ -194,7 +194,13 @@ def main():
                text="Añadir",
                command=lambda: add_contact_tk(contacts, name.get(), phone.get(), email.get(), frame_contact_list)
                ).grid(column=3, row=3)
-    root.mainloop()
+    name_entry.focus()
+    for child in frame_add_contact.winfo_children():
+        child.grid_configure(padx=5, pady=5)
+    for child in frame_contact_list.winfo_children():
+        child.grid_configure(padx=5, pady=5)
 
+    root.mainloop()
+    save_contacts(contacts)
 if __name__ == "__main__":
     main()
