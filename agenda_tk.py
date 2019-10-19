@@ -145,8 +145,12 @@ def find_contact(contacts):
 
 def export_contacts():
     pass
-def sumador():
-    cocontador_contactos_cargados = 1
+def sumador(contacts, frame_contact_list):
+    for contact in contacts:
+        cols, row = frame_contact_list.grid_size()
+        ttk.Label(frame_contact_list, text=contact["name"]).grid(column=1, row=row)
+        ttk.Label(frame_contact_list, text=contact["email"]).grid(column=2, row=row)
+        ttk.Label(frame_contact_list, text=contact["phone"]).grid(column=3, row=row)
 
 def load_contacts():
     try:
@@ -195,18 +199,11 @@ def main():
                ).grid(column=3, row=3)
     name_entry.focus()
     ttk.Button(frame_add_contact, text="Cargar contactos",
-               command=sumador()).grid(column=2, row=3)
+               command=lambda: sumador(contacts, frame_contact_list)).grid(column=2, row=3)
     for child in frame_add_contact.winfo_children():
         child.grid_configure(padx=5, pady=5)
     for child in frame_contact_list.winfo_children():
         child.grid_configure(padx=5, pady=5)
-    if contador_contactos_cargados == 1:
-        for contact in contacts:
-            cols, row = frame_contact_list.grid_size()
-            ttk.Label(frame_contact_list, text=contact["name"]).grid(column=1, row=row)
-            ttk.Label(frame_contact_list, text=contact["email"]).grid(column=2, row=row)
-            ttk.Label(frame_contact_list, text=contact["phone"]).grid(column=3, row=row)
-        contador_contactos_cargados = 0
     save_contacts(contacts)
     root.mainloop()
 
