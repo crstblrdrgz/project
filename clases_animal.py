@@ -1,7 +1,7 @@
 
 
 class Dog:
-    def __int__(self, name, specie, age):
+    def __init__(self, name, specie, age):
         self.name = name
         self.specie = specie
         self.age = age
@@ -11,4 +11,7 @@ class Dog:
 
 
 my_dog = Dog("hodor", "mestizo", 4)
-my_dog2 =
+my_dog2 = Dog("doggy", "bulldog", 2)
+my_dog3 = Dog("tobby", "dalmata", 6)
+
+print(my_dog2.age)
